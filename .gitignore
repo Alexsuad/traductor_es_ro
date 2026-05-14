@@ -1,0 +1,29 @@
+# --- ENTORNOS Y DEPENDENCIAS ---
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# --- SEGURIDAD Y CONFIGURACIÓN ---
+.env
+.env.local
+.env.*.local
+secrets.json
+
+# --- SALIDAS Y RESULTADOS DEL PROYECTO ---
+# Se ignoran los resultados de ejecución y audios para no ensuciar el repo
+resultados/
+audios_salida/
+traductor_rumano_lab/resultados/
+traductor_rumano_lab/audios_salida/
+*.log
+
+# --- IDEs Y SISTEMA ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
