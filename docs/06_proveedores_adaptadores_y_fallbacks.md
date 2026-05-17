@@ -258,7 +258,7 @@ Se usará principalmente como apoyo contextual.
 
 ### Uso previsto
 
-ElevenLabs será candidato principal para voz natural.
+ElevenLabs será uno de los candidatos fuertes para voz natural.
 
 ### Motivo
 
@@ -344,7 +344,7 @@ Este fallback es obligatorio.
 
 ### Uso previsto
 
-Candidato principal para transcripción en fases posteriores.
+Uno de los candidatos para transcripción en fases posteriores.
 
 ### Motivo
 
@@ -772,6 +772,6 @@ Este documento se considera correcto si:
 # 22. Estado
 
 ```text
-Estado: Borrador inicial aprobado para revisión.
+Estado: Aprobado documentalmente para cierre de planeación.
 ```
 

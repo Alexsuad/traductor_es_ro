@@ -611,6 +611,6 @@ Este documento se considera correcto si:
 # 22. Estado
 
 ```text
-Estado: Borrador inicial aprobado para revisión.
+Estado: Aprobado documentalmente para cierre de planeación.
 ```
 

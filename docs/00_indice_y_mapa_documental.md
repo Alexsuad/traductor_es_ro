@@ -756,12 +756,12 @@ Este documento se considera completo cuando:
 
 ---
 
-# 11. Siguiente documento a crear
+# 11. Estado del mapa documental
 
-El siguiente documento debe ser:
+El mapa documental del proyecto se encuentra completamente al día y consolidado:
 
 ```text
-01_contexto_y_objetivo_funcional.md
+- Documentos activos: Del 00 al 09 (cobertura total de arquitectura, seguridad, pruebas y gobernanza).
+- Architectural Decision Records: Del ADR-001 al ADR-008 registrados y aprobados.
+- Estado general: Cierre de planeación documental finalizado con éxito.
 ```
-
-Ese documento debe definir el problema, el objetivo humano, el objetivo funcional, los usuarios, el alcance y los límites del MVP.

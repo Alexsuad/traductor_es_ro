@@ -680,5 +680,5 @@ Este documento se considera correcto si:
 # 24. Estado
 
 ```text
-Estado: Borrador inicial aprobado para revisión.
+Estado: Aprobado documentalmente para cierre de planeación.
 ```
