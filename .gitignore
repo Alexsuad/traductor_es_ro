@@ -27,3 +27,7 @@ traductor_rumano_lab/audios_salida/
 .idea/
 .DS_Store
 Thumbs.db
+
+# --- CARPETAS EXTERNAS / TEMPORALES ---
+*archivos_zip/
+C:\\\\Mis Documentos\\\\archivos_zip/
