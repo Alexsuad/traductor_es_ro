@@ -65,18 +65,22 @@ docs/
 ├── 05_frontend_y_experiencia_usuario.md
 ├── 06_proveedores_adaptadores_y_fallbacks.md
 ├── 07_tests_validacion_y_go_no_go.md
-└── 08_plan_implementacion_desarrolladores.md
+├── 08_plan_implementacion_desarrolladores.md
+└── 09_modelo_operativo_chats_y_equipos.md
 ```
 
 Si el proyecto requiere registrar decisiones arquitectónicas específicas, se usará una carpeta adicional:
 
 ```text
 docs/adr/
-├── adr_001_pipeline_modular_para_rumano.md
-├── adr_002_frontend_fastapi_jinja_htmx.md
-├── adr_003_modo_simulacion_por_defecto.md
-├── adr_004_hexagonal_solo_para_proveedores.md
-└── adr_005_texto_primero_audio_despues.md
+├── adr_001_pipeline_modular_y_motor_hibrido.md
+├── adr_002_modo_simulacion_por_defecto.md
+├── adr_003_hexagonal_solo_para_proveedores.md
+├── adr_004_texto_primero_audio_despues.md
+├── adr_005_frontend_fastapi_jinja_htmx.md
+├── adr_006_idiomas_configurables_e_ingles_candidato.md
+├── adr_007_no_elegir_proveedor_principal_sin_pruebas.md
+└── adr_008_modelo_operativo_chats_y_equipos.md
 ```
 
 Los ADR son documentos breves de decisión. No reemplazan la documentación principal.
@@ -479,6 +483,50 @@ Los ADR son documentos breves de decisión. No reemplazan la documentación prin
 
 ---
 
+## 3.10. `09_modelo_operativo_chats_y_equipos.md`
+
+### Pregunta que responde
+
+```text
+¿Cómo se coordinan los equipos/chats del proyecto y quién puede dar instrucciones a Antigravity/Codex?
+```
+
+### Incluye
+
+* Lista oficial de equipos.
+* Permisos de instrucción a Antigravity/Codex.
+* Límites por equipo.
+* Flujo de escalamiento de hallazgos.
+* Formato mínimo de reporte.
+* Resolución de conflictos entre equipos.
+* Criterios de cierre de instrucciones con evidencia.
+* Relación con ADR.
+
+### No incluye
+
+* Arquitectura técnica del traductor.
+* Arquitectura interna de agentes.
+* Código.
+* Skills detalladas.
+* Workflows completos.
+* Gates técnicos específicos.
+
+### Referencias internas
+
+* Para arquitectura técnica, ver `02_arquitectura_tecnica.md`.
+* Para implementación por fases, ver `08_plan_implementacion_desarrolladores.md`.
+* Para seguridad y costes, ver `04_seguridad_privacidad_y_costes.md`.
+
+### Rol principal que lo consulta
+
+* Todos los equipos operativos.
+* Arquitectura y Programación.
+* Arnés de Desarrollo Agéntico.
+* Testing.
+* Calidad y Seguridad.
+
+---
+
 # 4. Orden recomendado de lectura
 
 ## 4.1. Para todo el equipo
@@ -489,6 +537,7 @@ Los ADR son documentos breves de decisión. No reemplazan la documentación prin
 3. 02_arquitectura_tecnica.md
 4. 03_plan_laboratorio_fase_0.md
 5. 08_plan_implementacion_desarrolladores.md
+6. 09_modelo_operativo_chats_y_equipos.md
 ```
 
 ## 4.2. Para backend developers
@@ -500,6 +549,7 @@ Los ADR son documentos breves de decisión. No reemplazan la documentación prin
 4. 06_proveedores_adaptadores_y_fallbacks.md
 5. 07_tests_validacion_y_go_no_go.md
 6. 08_plan_implementacion_desarrolladores.md
+7. 09_modelo_operativo_chats_y_equipos.md
 ```
 
 ## 4.3. Para frontend / UX
@@ -509,6 +559,7 @@ Los ADR son documentos breves de decisión. No reemplazan la documentación prin
 2. 05_frontend_y_experiencia_usuario.md
 3. 07_tests_validacion_y_go_no_go.md
 4. 08_plan_implementacion_desarrolladores.md
+5. 09_modelo_operativo_chats_y_equipos.md
 ```
 
 ## 4.4. Para QA
@@ -518,6 +569,7 @@ Los ADR son documentos breves de decisión. No reemplazan la documentación prin
 2. 03_plan_laboratorio_fase_0.md
 3. 04_seguridad_privacidad_y_costes.md
 4. 07_tests_validacion_y_go_no_go.md
+5. 09_modelo_operativo_chats_y_equipos.md
 ```
 
 ## 4.5. Para DevOps o responsable de entorno
@@ -526,6 +578,7 @@ Los ADR son documentos breves de decisión. No reemplazan la documentación prin
 1. 04_seguridad_privacidad_y_costes.md
 2. 08_plan_implementacion_desarrolladores.md
 3. 02_arquitectura_tecnica.md
+4. 09_modelo_operativo_chats_y_equipos.md
 ```
 
 ## 4.6. Para una IA/agente de desarrollo
@@ -539,6 +592,7 @@ Los ADR son documentos breves de decisión. No reemplazan la documentación prin
 6. 06_proveedores_adaptadores_y_fallbacks.md
 7. 07_tests_validacion_y_go_no_go.md
 8. 08_plan_implementacion_desarrolladores.md
+9. 09_modelo_operativo_chats_y_equipos.md
 ```
 
 ---
@@ -585,6 +639,7 @@ Cada tema tiene un documento dueño.
 | Proveedores y fallbacks        | `06_proveedores_adaptadores_y_fallbacks.md` |
 | Tests y GO/NO-GO               | `07_tests_validacion_y_go_no_go.md`         |
 | Implementación por fases       | `08_plan_implementacion_desarrolladores.md` |
+| Modelo operativo y equipos    | `09_modelo_operativo_chats_y_equipos.md`    |
 
 ## 5.4. Los documentos no deben contradecirse
 
@@ -608,6 +663,8 @@ Si una decisión cambia, se debe actualizar:
 07_tests_validacion_y_go_no_go.md
         ↓
 08_plan_implementacion_desarrolladores.md
+        ↓
+09_modelo_operativo_chats_y_equipos.md
 ```
 
 Documentos transversales:
