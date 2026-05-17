@@ -28,7 +28,7 @@ Este documento no describe la UX, el plan completo de implementación, las plant
 
 ---
 
-# 3. Matriz de Motores y Caminos de Ejecución
+# 2. Matriz de Motores y Caminos de Ejecución
 
 El sistema decide el camino técnico según el `MODO_MOTOR` seleccionado.
 
@@ -39,7 +39,7 @@ El sistema decide el camino técnico según el `MODO_MOTOR` seleccionado.
 | `Combined` | Uso de ambos motores para validación cruzada. | Experimental |
 | `AUTO` | El sistema elige según idioma de destino. | Híbrido |
 
-### 3.1. Rutas de idiomas
+## 2.1. Rutas de idiomas
 *   **Ruta Familiar:** Español ↔ Rumano (Enfoque principal).
 *   **Ruta Candidata:** Español ↔ Inglés, Rumano ↔ Inglés (Para validación y comparación).
 
@@ -166,7 +166,7 @@ Estas respuestas no buscan validar calidad lingüística. Buscan validar flujo t
 
 ### Uso previsto
 
-DeepL será candidato principal para las primeras pruebas reales de traducción texto.
+DeepL será uno de los candidatos para las primeras pruebas reales de traducción texto. No se declara como proveedor principal definitivo hasta comparar calidad, latencia y coste frente a otros candidatos.
 
 ### Motivo
 
@@ -228,7 +228,7 @@ Las credenciales no deben versionarse.
 
 ### Uso previsto
 
-OpenAI texto no será el primer traductor para todas las frases.
+OpenAI texto será candidato de comparación, especialmente para evaluar tono familiar, naturalidad y rutas con inglés. No se declara como proveedor principal hasta medir resultados y coste.
 
 Se usará principalmente como apoyo contextual.
 
@@ -737,6 +737,12 @@ Para implementación por fases:
 
 ```text
 08_plan_implementacion_desarrolladores.md
+```
+
+Para modelo operativo de equipos, límites de instrucción y coordinación con proveedores:
+
+```text
+09_modelo_operativo_chats_y_equipos.md
 ```
 
 ---

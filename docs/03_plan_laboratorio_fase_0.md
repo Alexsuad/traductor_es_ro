@@ -428,9 +428,9 @@ WebSockets
 ### Frases de prueba — Rumano → Español
 
 1. Ne bucurăm că ești aici cu noi.
-2. Vrei să mănânci ceva o să bei o cafea?
+2. Vrei să mănânci ceva sau să bei o cafea?
 3. Nu îți face griji, poți vorbi încet.
-4. Familia este foarte importantă para noi.
+4. Familia este foarte importantă pentru noi.
 5. Dacă nu înțelegi, putem repeta.
 
 Estas frases son suficientes para probar el flujo sin coste.

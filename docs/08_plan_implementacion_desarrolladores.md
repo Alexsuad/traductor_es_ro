@@ -857,6 +857,12 @@ Para pruebas y GO/NO-GO:
 07_tests_validacion_y_go_no_go.md
 ```
 
+Para modelo operativo de equipos, responsabilidades y flujo de instrucciones:
+
+```text
+09_modelo_operativo_chats_y_equipos.md
+```
+
 ---
 
 # 17. Criterio de calidad de este documento
@@ -883,5 +889,5 @@ Este documento se considera correcto si:
 # 18. Estado
 
 ```text
-Estado: Borrador inicial aprobado para revisión.
+Estado: Aprobado documentalmente para iniciar Fase 1 — Laboratorio con modo simulación.
 ```

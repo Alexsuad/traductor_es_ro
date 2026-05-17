@@ -78,7 +78,7 @@ El motor debe estar preparado para procesar:
 ## 4.3. Lógica de selección de ruta
 El sistema recibirá `idioma_origen` e `idioma_destino` y el `MODO_MOTOR` decidirá si utiliza un servicio directo o el pipeline modular escalonado.
 
-## 4.3. Modo degradado
+## 4.4. Modo degradado
 
 Si una etapa falla, el sistema debe intentar mantener la utilidad mínima.
 
@@ -726,6 +726,12 @@ Para implementación secuencial:
 
 ```text
 08_plan_implementacion_desarrolladores.md
+```
+
+Para modelo operativo de equipos y flujo de instrucciones:
+
+```text
+09_modelo_operativo_chats_y_equipos.md
 ```
 
 ---
