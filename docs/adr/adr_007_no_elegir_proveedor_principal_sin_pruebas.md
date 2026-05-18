@@ -1,4 +1,11 @@
+# File: docs/adr/adr_007_no_elegir_proveedor_principal_sin_pruebas.md
+# ──────────────────────────────────────────────────────────────────────
+# Propósito: Registrar la decisión de no preseleccionar un proveedor de IA principal sin realizar pruebas empíricas previas.
+# Rol: Registro de Decisión Arquitectónica (ADR)
+# ──────────────────────────────────────────────────────────────────────
+
 # ADR-007 — No elegir proveedor principal sin pruebas
+
 
 ## Estado
 
@@ -11,7 +18,9 @@ Existen múltiples proveedores de IA para transcripción, traducción y voz (Dee
 ## Decisión
 
 *   No se declara ningún proveedor como "principal definitivo" antes de realizar las pruebas exhaustivas en el laboratorio.
-*   Todos los proveedores mencionados en la documentación se consideran candidatos en igualdad de condiciones.
+*   Todos los proveedores mencionados en la documentación se consideran candidatos no definitivos.
+    Puede existir un orden inicial de prueba por facilidad técnica, coste o disponibilidad,
+    pero ningún proveedor queda elegido como principal hasta medir calidad, latencia y coste.
 *   La selección del proveedor principal para cada componente se basará exclusivamente en:
     *   Calidad (específicamente en rumano).
     *   Latencia (tiempo de respuesta).

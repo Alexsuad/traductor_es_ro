@@ -1,4 +1,11 @@
+# File: docs/00_indice_y_mapa_documental.md
+# ──────────────────────────────────────────────────────────────────────
+# Propósito: Organizar el índice maestro de toda la documentación del proyecto y el mapa de lectura.
+# Rol: Índice y Mapa Documental Principal (docs/00)
+# ──────────────────────────────────────────────────────────────────────
+
 # 00 — Índice y mapa documental
+
 
 ## Proyecto
 
@@ -80,7 +87,8 @@ docs/adr/
 ├── adr_005_frontend_fastapi_jinja_htmx.md
 ├── adr_006_idiomas_configurables_e_ingles_candidato.md
 ├── adr_007_no_elegir_proveedor_principal_sin_pruebas.md
-└── adr_008_modelo_operativo_chats_y_equipos.md
+├── adr_008_modelo_operativo_chats_y_equipos.md
+└── adr_009_control_de_turnos_y_simultaneidad_experimental.md
 ```
 
 Los ADR son documentos breves de decisión. No reemplazan la documentación principal.
@@ -762,6 +770,6 @@ El mapa documental del proyecto se encuentra completamente al día y consolidado
 
 ```text
 - Documentos activos: Del 00 al 09 (cobertura total de arquitectura, seguridad, pruebas y gobernanza).
-- Architectural Decision Records: Del ADR-001 al ADR-008 registrados y aprobados.
+- Architectural Decision Records: Del ADR-001 al ADR-009 registrados y aprobados.
 - Estado general: Cierre de planeación documental finalizado con éxito.
 ```

@@ -1,4 +1,11 @@
+# File: docs/adr/adr_008_modelo_operativo_chats_y_equipos.md
+# ──────────────────────────────────────────────────────────────────────
+# Propósito: Registrar las responsabilidades y gobernanza de los equipos y chats respecto a la configuración agéntica y directrices.
+# Rol: Registro de Decisión Arquitectónica (ADR)
+# ──────────────────────────────────────────────────────────────────────
+
 # ADR-008 — Modelo operativo de chats y equipos
+
 
 ## Estado
 
@@ -14,7 +21,7 @@ Para evitar contraórdenes y cambios contradictorios en un entorno de desarrollo
 *   Este modelo operativo define la interacción humana y no la arquitectura interna de agentes de Antigravity/Codex.
 *   Los equipos operativos (Arquitectura, Arnés, Backend, Frontend, Testing, Calidad y Seguridad) pueden dar instrucciones técnicas a Antigravity/Codex solo dentro de su dominio de responsabilidad.
 *   El **Equipo Experto de Usuario / Cliente** no tiene permiso para dar instrucciones técnicas directas a la IA; su rol es auditar funcionalmente y reportar hallazgos a los equipos responsables.
-*   El **Equipo Arnés de Desarrollo Agéntico** es el único autorizado para decidir sobre la creación de archivos de configuración agéntica (`AGENTS.md`, `GEMINI.md`, `SKILL.md`, etc.).
+*   El **Equipo Arnés de Desarrollo Agéntico** es el único autorizado para decidir sobre la creación de archivos de configuración agéntica como AGENTS.md, GEMINI.md, skills, workflows o gates, según la herramienta usada.
 *   La regla de oro es evitar contraórdenes mediante la delimitación estricta de dominios.
 
 ## Consecuencias positivas
