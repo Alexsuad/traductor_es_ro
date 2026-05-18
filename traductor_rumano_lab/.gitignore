@@ -1,0 +1,40 @@
+# File: traductor_rumano_lab/.gitignore
+# ──────────────────────────────────────────────────────────────────────
+# Propósito: Excluir archivos sensibles, temporales, entornos y claves del repositorio.
+# Rol: Configuración de Git para control de versiones del laboratorio.
+# ──────────────────────────────────────────────────────────────────────
+
+# Entornos virtuales locales
+.venv/
+env/
+venv/
+ENV/
+
+# Entorno de configuración y variables sensibles
+.env
+
+# Cachés de Python y herramientas de testing
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Archivos de audio generados durante pruebas
+*.mp3
+*.wav
+*.m4a
+audios_salida/*.mp3
+audios_salida/*.wav
+audios_salida/*.m4a
+
+# Logs y reportes temporales no MD
+resultados/*.log
+resultados/*.jsonl
+
+# Archivos de credenciales en fases futuras
+*credentials*.json
+google_*.json
+service_account*.json
