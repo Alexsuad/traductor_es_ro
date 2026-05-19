@@ -5,7 +5,6 @@
 # ──────────────────────────────────────────────────────────────────────
 
 import pytest
-import deepl
 from unittest.mock import patch, MagicMock
 from src_lab.config.settings_lab import get_settings
 from src_lab.providers_real.traductor_deepl import TraductorDeepL
