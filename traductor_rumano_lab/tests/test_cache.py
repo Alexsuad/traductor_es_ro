@@ -37,6 +37,26 @@ def test_cache_guardar_y_obtener():
     if os.path.exists(settings.ruta_cache_frases):
         os.remove(settings.ruta_cache_frases)
 
+def test_cache_aislamiento_proveedor():
+    """Valida que los resultados de diferentes proveedores no colisionen."""
+    settings = get_settings()
+    settings.ruta_cache_frases = "resultados/test_cache_aislamiento.json"
+    
+    cache = CacheFrasesSimple(settings)
+    
+    frase = "Hola."
+    
+    # Simulamos que 'fake' da una traducción y 'deepl' da otra ligeramente distinta
+    cache.guardar(frase, "es", "ro", "Salut (Fake)", proveedor="fake")
+    cache.guardar(frase, "es", "ro", "Salut (DeepL)", proveedor="deepl")
+    
+    assert cache.obtener(frase, "es", "ro", proveedor="fake") == "Salut (Fake)"
+    assert cache.obtener(frase, "es", "ro", proveedor="deepl") == "Salut (DeepL)"
+    
+    # Limpieza
+    if os.path.exists(settings.ruta_cache_frases):
+        os.remove(settings.ruta_cache_frases)
+
 
 def test_cache_deshabilitada_no_guarda():
     """Prueba que si usar_cache es False, no se almacene ni recupere nada."""

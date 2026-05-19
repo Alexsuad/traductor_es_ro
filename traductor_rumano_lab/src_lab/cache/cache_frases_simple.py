@@ -19,12 +19,13 @@ class CacheFrasesSimple:
         self.cache: Dict[str, str] = {}
         self._cargar_cache()
 
-    def _generar_clave(self, texto: str, origen: str, destino: str) -> str:
+    def _generar_clave(self, texto: str, origen: str, destino: str, proveedor: str) -> str:
         """Genera una clave única normalizada para la caché."""
         texto_norm = texto.strip().lower()
         origen_norm = origen.strip().lower()
         destino_norm = destino.strip().lower()
-        return f"{origen_norm}:{destino_norm}:{texto_norm}"
+        proveedor_norm = proveedor.strip().lower()
+        return f"{proveedor_norm}:{origen_norm}:{destino_norm}:{texto_norm}"
 
     def _cargar_cache(self) -> None:
         """Carga la caché desde el archivo JSON si existe y está habilitada."""
@@ -69,13 +70,14 @@ class CacheFrasesSimple:
             # Silenciar o registrar internamente para que no bloquee ejecuciones críticas
             pass
 
-    def obtener(self, texto: str, origen: str, destino: str) -> Optional[str]:
+    def obtener(self, texto: str, origen: str, destino: str, proveedor: str = "fake") -> Optional[str]:
         """Obtiene la traducción de la caché si está disponible.
 
         Args:
             texto: Texto original.
             origen: Idioma origen.
             destino: Idioma destino.
+            proveedor: El proveedor de traducción (ej. 'deepl', 'fake'). Default 'fake'.
 
         Returns:
             Texto traducido o None si no hay acierto.
@@ -83,10 +85,10 @@ class CacheFrasesSimple:
         if not self.settings.usar_cache:
             return None
 
-        clave = self._generar_clave(texto, origen, destino)
+        clave = self._generar_clave(texto, origen, destino, proveedor)
         return self.cache.get(clave)
 
-    def guardar(self, texto: str, origen: str, destino: str, traduccion: str) -> None:
+    def guardar(self, texto: str, origen: str, destino: str, traduccion: str, proveedor: str = "fake") -> None:
         """Almacena una nueva traducción en la caché y la persiste en el disco.
 
         Args:
@@ -94,10 +96,11 @@ class CacheFrasesSimple:
             origen: Idioma origen.
             destino: Idioma destino.
             traduccion: Texto traducido.
+            proveedor: El proveedor de traducción (ej. 'deepl', 'fake'). Default 'fake'.
         """
         if not self.settings.usar_cache:
             return
 
-        clave = self._generar_clave(texto, origen, destino)
+        clave = self._generar_clave(texto, origen, destino, proveedor)
         self.cache[clave] = traduccion
         self._guardar_disco()

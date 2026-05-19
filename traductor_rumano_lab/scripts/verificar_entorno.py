@@ -27,7 +27,6 @@ def verificar_entorno() -> bool:
         "sqlmodel",
         "sqlalchemy",
         "openai",
-        "deepl",
         "elevenlabs",
         "google.cloud.translate",
         "gtts",
@@ -57,12 +56,21 @@ def verificar_entorno() -> bool:
         print(f"  - IDIOMAS_HABILITADOS: {settings.idiomas_habilitados}")
         print(f"  - MAX_CARACTERES_POR_FRASE: {settings.max_caracteres_por_frase}")
 
-        # 3. Validar estado seguro estricto (ADR-002)
-        if not settings.modo_simulacion or settings.permitir_apis_reales:
-            print("  [ALERTA] ¡ATENCIÓN!: El laboratorio no está configurado en modo simulación seguro.")
-            todo_ok = False
+        # 3. Validar estado seguro estricto de conmutación (Fase 2)
+        if settings.modo_simulacion and not settings.permitir_apis_reales:
+            print("  [OK] Estado seguro confirmado: MODO SIMULACIÓN ACTIVO (MODO_SIMULACION=true y PERMITIR_APIS_REALES=false).")
+        elif not settings.modo_simulacion and settings.permitir_apis_reales:
+            print("  [OK] Estado seguro confirmado: MODO INTEGRACIÓN REAL ACTIVO (MODO_SIMULACION=false y PERMITIR_APIS_REALES=true).")
+            # Validar que la API Key esté presente físicamente
+            if not settings.deepl_api_key:
+                print("  [ALERTA] ¡ATENCIÓN!: Se ha habilitado la API real pero DEEPL_API_KEY está vacía o no definida.")
+                todo_ok = False
+            else:
+                masked_key = settings.deepl_api_key[:4] + "..." + settings.deepl_api_key[-4:] if len(settings.deepl_api_key) > 8 else "..."
+                print(f"  - DEEPL_API_KEY detectada: {masked_key}")
         else:
-            print("  [OK] Estado seguro confirmado (MODO_SIMULACION=true y PERMITIR_APIS_REALES=false).")
+            print("  [ALERTA] ¡CONFIGURACIÓN INVÁLIDA O INSEGURA!: Los flags del entorno se encuentran en un estado mixto no permitido.")
+            todo_ok = False
 
     except Exception as e:
         print(f"  [ERR] Error al cargar o validar variables con Pydantic: {e}")
@@ -81,7 +89,7 @@ def verificar_entorno() -> bool:
 
     print("\n=== [FIN DE VERIFICACIÓN] ===")
     if todo_ok:
-        print("RESULTADO: TODO CORRECTO. Listo para ejecutar pruebas de simulación.")
+        print("RESULTADO: TODO CORRECTO. Entorno listo y verificado para la Fase 2.")
     else:
         print("RESULTADO: FALLO DE VERIFICACIÓN. Revisa las alertas anteriores antes de continuar.")
 
@@ -91,3 +99,4 @@ def verificar_entorno() -> bool:
 if __name__ == "__main__":
     exito = verificar_entorno()
     sys.exit(0 if exito else 1)
+

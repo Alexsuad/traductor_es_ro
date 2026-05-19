@@ -37,6 +37,7 @@ class SettingsLab(BaseSettings):
     max_llamadas_por_ejecucion: int = Field(alias="MAX_LLAMADAS_POR_EJECUCION", default=10)
     max_caracteres_por_frase: int = Field(alias="MAX_CARACTERES_POR_FRASE", default=300)
     max_frases_por_prueba: int = Field(alias="MAX_FRASES_POR_PRUEBA", default=5)
+    max_caracteres_diarios_traduccion: int = Field(alias="MAX_CARACTERES_DIARIOS_TRADUCCION", default=5000)
 
     max_minutos_translate_dia: int = Field(alias="MAX_MINUTOS_TRANSLATE_DIA", default=10)
     max_minutos_whisper_dia: int = Field(alias="MAX_MINUTOS_WHISPER_DIA", default=10)
@@ -58,6 +59,7 @@ class SettingsLab(BaseSettings):
 
     # --- CREDENCIALES DE PROVEEDORES ---
     deepl_api_key: Optional[str] = Field(alias="DEEPL_API_KEY", default=None)
+    deepl_usar_pro: bool = Field(alias="DEEPL_USAR_PRO", default=False)
     elevenlabs_api_key: Optional[str] = Field(alias="ELEVENLABS_API_KEY", default=None)
     openai_api_key: Optional[str] = Field(alias="OPENAI_API_KEY", default=None)
     google_application_credentials: Optional[str] = Field(alias="GOOGLE_APPLICATION_CREDENTIALS", default=None)
