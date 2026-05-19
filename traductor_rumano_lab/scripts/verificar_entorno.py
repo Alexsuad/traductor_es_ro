@@ -29,7 +29,6 @@ def verificar_entorno() -> bool:
         "openai",
         "elevenlabs",
         "google.cloud.translate",
-        "gtts",
         "pydub",
         "soundfile"
     ]
@@ -53,6 +52,9 @@ def verificar_entorno() -> bool:
         print("  [OK] Variables de entorno cargadas con éxito.")
         print(f"  - MODO_SIMULACION: {settings.modo_simulacion}")
         print(f"  - PERMITIR_APIS_REALES: {settings.permitir_apis_reales}")
+        print(f"  - PERMITIR_VOZ_REAL: {settings.permitir_voz_real}")
+        print(f"  - PERMITIR_GTTS: {settings.permitir_gtts}")
+        print(f"  - PROVEEDOR_VOZ: {settings.proveedor_voz}")
         print(f"  - IDIOMAS_HABILITADOS: {settings.idiomas_habilitados}")
         print(f"  - MAX_CARACTERES_POR_FRASE: {settings.max_caracteres_por_frase}")
 
@@ -70,6 +72,31 @@ def verificar_entorno() -> bool:
                 print(f"  - DEEPL_API_KEY detectada: {masked_key}")
         else:
             print("  [ALERTA] ¡CONFIGURACIÓN INVÁLIDA O INSEGURA!: Los flags del entorno se encuentran en un estado mixto no permitido.")
+            todo_ok = False
+
+        if settings.proveedor_voz == "fake":
+            if settings.permitir_voz_real or settings.permitir_gtts:
+                print(
+                    "  [ALERTA] ¡CONFIGURACIÓN DE VOZ INSEGURA!: "
+                    "PROVEEDOR_VOZ=fake requiere PERMITIR_VOZ_REAL=false y PERMITIR_GTTS=false."
+                )
+                todo_ok = False
+            else:
+                print("  [OK] Voz segura por defecto confirmada: proveedor fake sin gTTS activo.")
+        elif settings.proveedor_voz == "gtts":
+            if not settings.permitir_voz_real or not settings.permitir_gtts:
+                print(
+                    "  [ALERTA] ¡CONFIGURACIÓN DE VOZ INCOMPLETA!: "
+                    "gTTS requiere PERMITIR_VOZ_REAL=true y PERMITIR_GTTS=true."
+                )
+                todo_ok = False
+            else:
+                print("  [OK] Configuración de gTTS coherente y explícita.")
+        else:
+            print(
+                "  [ALERTA] ¡PROVEEDOR DE VOZ DESCONOCIDO!: "
+                f"'{settings.proveedor_voz}' no está permitido en Fase 3A.1."
+            )
             todo_ok = False
 
     except Exception as e:
@@ -99,4 +126,3 @@ def verificar_entorno() -> bool:
 if __name__ == "__main__":
     exito = verificar_entorno()
     sys.exit(0 if exito else 1)
-

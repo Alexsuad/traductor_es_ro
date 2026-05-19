@@ -7,7 +7,7 @@
 import os
 from functools import lru_cache
 from typing import List, Optional
-from pydantic import Field, field_validator
+from pydantic import Field, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -17,6 +17,9 @@ class SettingsLab(BaseSettings):
     # --- CONTROL GLOBAL DE SEGURIDAD ---
     modo_simulacion: bool = Field(alias="MODO_SIMULACION", default=True)
     permitir_apis_reales: bool = Field(alias="PERMITIR_APIS_REALES", default=False)
+    permitir_voz_real: bool = Field(alias="PERMITIR_VOZ_REAL", default=False)
+    permitir_gtts: bool = Field(alias="PERMITIR_GTTS", default=False)
+    proveedor_voz: str = Field(alias="PROVEEDOR_VOZ", default="fake")
 
     # --- CONFIGURACIÓN DE IDIOMAS ---
     idiomas_habilitados_str: str = Field(alias="IDIOMAS_HABILITADOS", default="es,ro,en")
@@ -89,6 +92,36 @@ class SettingsLab(BaseSettings):
                 "mientras el modo simulación esté habilitado (MODO_SIMULACION=true)."
             )
         return v
+
+    @field_validator("proveedor_voz")
+    @classmethod
+    def validar_proveedor_voz(cls, valor: str) -> str:
+        """Restringe el laboratorio al proveedor fake o gTTS en Fase 3A.1."""
+        proveedor = valor.strip().lower()
+        if proveedor not in {"fake", "gtts"}:
+            raise ValueError(
+                "PROVEEDOR_VOZ invalido. Solo se permiten 'fake' o 'gtts' en Fase 3A.1."
+            )
+        return proveedor
+
+    @model_validator(mode="after")
+    def validar_seguridad_voz(self) -> "SettingsLab":
+        """Impone una configuracion coherente para la voz del laboratorio."""
+        if self.proveedor_voz == "fake":
+            if self.permitir_voz_real or self.permitir_gtts:
+                raise ValueError(
+                    "Configuracion de voz invalida: PROVEEDOR_VOZ=fake requiere "
+                    "PERMITIR_VOZ_REAL=false y PERMITIR_GTTS=false."
+                )
+            return self
+
+        if not self.permitir_voz_real or not self.permitir_gtts:
+            raise ValueError(
+                "Configuracion de voz invalida: PROVEEDOR_VOZ=gtts requiere "
+                "PERMITIR_VOZ_REAL=true y PERMITIR_GTTS=true."
+            )
+
+        return self
 
 
 @lru_cache()
